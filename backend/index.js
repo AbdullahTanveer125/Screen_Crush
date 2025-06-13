@@ -16,6 +16,9 @@ app.use(express.json());// Middleware to parse JSON data
 
 
 
+const contact_us_router=require("./Routes/contactUs.js");
+
+
 //connection of mongoDB
 connectDB();
 
@@ -39,6 +42,15 @@ app.get('/api/popular-movies', async (req, res) => {
     res.status(500).json({ error: 'Failed to fetch data' });
   }
 });
+
+
+
+//to use router
+// app.use("/notification", notification_router); 
+app.use(contact_us_router);
+
+
+
 
 const PORT = process.env.PORT || 5000;
 
