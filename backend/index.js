@@ -6,9 +6,13 @@ const axios = require('axios');
 require("dotenv").config();// import and configuration of dotenv
 
 const app = express();
-app.use(cors());
 app.use(express.json());// Middleware to parse JSON data
 
+app.use(cors({
+  origin: "http://localhost:3000", // your frontend URL
+  methods: ["GET", "POST", "PUT", "DELETE"],
+  credentials: true,
+}));
 // Routes
 // const sampleRoute = require("./routes/sampleRoute");
 // app.use("/api/sample", sampleRoute);
@@ -17,6 +21,7 @@ app.use(express.json());// Middleware to parse JSON data
 
 
 const contact_us_router=require("./Routes/contactUs.js");
+const user_router=require("./Routes/user.js");
 
 
 //connection of mongoDB
@@ -48,6 +53,7 @@ app.get('/api/popular-movies', async (req, res) => {
 //to use router
 // app.use("/notification", notification_router); 
 app.use(contact_us_router);
+app.use("/user", user_router);
 
 
 
