@@ -22,7 +22,7 @@ app.use(cors({
 
 const contact_us_router=require("./Routes/contactUs.js");
 const user_router=require("./Routes/user.js");
-const chat_router=require("./Routes/chat.js");
+
 
 
 //connection of mongoDB
@@ -55,7 +55,7 @@ app.get('/api/popular-movies', async (req, res) => {
 // app.use("/notification", notification_router); 
 app.use(contact_us_router);
 app.use("/user", user_router);
-app.use('/api/chat', chat_router);
+
 
 
 
