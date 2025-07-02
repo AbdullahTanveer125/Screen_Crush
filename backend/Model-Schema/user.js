@@ -13,7 +13,18 @@ const UserSchema = new mongoose.Schema({
     },
     image: {
         type: String,
-    }
+    },
+    isSubscribed: {
+        type: Boolean,
+        default: false,
+    },
+    subscription: {
+        plan: String,
+        status: String,
+        currentPeriodEnd: Date,
+        stripeCustomerId: String,
+        stripeSubscriptionId: String,
+    },
 });
 
 // const User = models.User || model("User", UserSchema);

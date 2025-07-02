@@ -1,9 +1,9 @@
-const express=require("express")
+const express = require("express")
 const contact_us_model = require("../Model-Schema/contactUs")
 
 
 //router object
-const contact_us_router=express.Router();
+const contact_us_router = express.Router();
 // const contact_us_router = express.Router();
 
 
@@ -34,4 +34,21 @@ contact_us_router.post('/contact', async (req, res) => {
 });
 
 
-module.exports=contact_us_router;
+
+// GET all contact messages
+contact_us_router.get('/get_contacts', async (req, res) => {
+    try {
+        const contacts = await contact_us_model.find().sort({ createdAt: -1 });
+        res.status(200).json({
+            success: true,
+            message: "Get contact data Successfully!",
+            contacts,
+        });
+        // res.status(200).json(contacts);
+    } catch (error) {
+        res.status(500).json({ message: 'Server error' });
+    }
+});
+
+
+module.exports = contact_us_router;

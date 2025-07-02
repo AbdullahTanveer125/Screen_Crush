@@ -22,6 +22,9 @@ app.use(cors({
 
 const contact_us_router=require("./Routes/contactUs.js");
 const user_router=require("./Routes/user.js");
+const addToCart_router=require("./Routes/addToCart.js");
+const payment_router=require("./Routes/paymentRoutes.js");
+
 
 
 
@@ -55,8 +58,8 @@ app.get('/api/popular-movies', async (req, res) => {
 // app.use("/notification", notification_router); 
 app.use(contact_us_router);
 app.use("/user", user_router);
-
-
+app.use(addToCart_router);
+app.use('/payment', payment_router);
 
 
 const PORT = process.env.PORT || 5000;
