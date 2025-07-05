@@ -122,11 +122,17 @@ payment_router.post('/create-checkout-session/:userId', async (req, res) => {
 function getPriceId(planId) {
     switch (planId) {
         case 'basic':
-            return 'price_1RewXxB3VaDYwKFkU9Wl1ah4'; // replace with real
+            //     return 'price_1RewXxB3VaDYwKFkU9Wl1ah4'; // replace with real
+            // case 'standard':
+            //     return 'price_1RewbaB3VaDYwKFk0ycWqrRn';
+            // case 'premium':
+            //     return 'price_1RewhnB3VaDYwKFksqTgepDh';
+
+            return process.env.STRIP_BASIC_PRICE; // replace with real
         case 'standard':
-            return 'price_1RewbaB3VaDYwKFk0ycWqrRn';
+            return process.env.STRIP_STANDARD_PRICE;
         case 'premium':
-            return 'price_1RewhnB3VaDYwKFksqTgepDh';
+            return process.env.STRIP_PREMIUM_PRICE;
         default:
             throw new Error('Invalid plan ID');
     }
@@ -189,9 +195,9 @@ payment_router.get('/verify-session/:sessionId/:email', async (req, res) => {
             console.log("==== UUUUUUU ====", updateUser)
             // const user = await user_model.findOne({ email:session.metadata.userEmail });
 
-            return res.json({ 
+            return res.json({
                 success: true,
-                user:updateUser
+                user: updateUser
             });
         } else {
             return res.status(400).json({ success: false, message: 'Payment not completed' });
