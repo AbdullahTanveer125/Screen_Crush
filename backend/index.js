@@ -21,6 +21,8 @@ console.log("Rehman with Fatima ==", process.env.STRIP_BASIC_PRICE)
 console.log("Rehman with Fatima ==", process.env.STRIP_STANDARD_PRICE)
 console.log("Rehman with Fatima ==", process.env.STRIP_PREMIUM_PRICE)
 
+console.log("DB ==", process.env.MONGODB_URI)
+
 const contact_us_router=require("./Routes/contactUs.js");
 const user_router=require("./Routes/user.js");
 const addToCart_router=require("./Routes/addToCart.js");
